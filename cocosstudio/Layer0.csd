@@ -21,36 +21,18 @@
             <PrePosition X="0.0000" Y="0.0000" />
             <PreSize X="1.0000" Y="1.0000" />
             <Children>
-              <NodeObjectData Name="Text_1" ActionTag="-1531264856" FrameEvent="" Tag="17" ObjectIndex="1" FontSize="20" LabelText="Return" ctype="TextObjectData">
+              <NodeObjectData Name="Button_1" ActionTag="781881613" FrameEvent="" Tag="20" ObjectIndex="1" TouchEnable="True" FontSize="14" ButtonText="&lt;" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                 <Position X="5.0000" Y="635.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleY="1.0000" />
-                <CColor A="255" R="0" G="0" B="0" />
-                <Size X="60.0000" Y="20.0000" />
-                <PrePosition X="0.0052" Y="0.9922" />
-                <PreSize X="0.0000" Y="0.0000" />
-              </NodeObjectData>
-              <NodeObjectData Name="Text_2" ActionTag="112542806" FrameEvent="" Tag="18" ObjectIndex="2" FontSize="20" LabelText="Add" ctype="TextObjectData">
-                <Position X="955.0000" Y="635.0000" />
-                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <AnchorPoint ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="0" G="0" B="0" />
-                <Size X="30.0000" Y="20.0000" />
-                <PrePosition X="0.9948" Y="0.9922" />
-                <PreSize X="0.0000" Y="0.0000" />
-              </NodeObjectData>
-              <NodeObjectData Name="ListView_1" ActionTag="-111573059" FrameEvent="" Tag="19" ObjectIndex="1" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ScrollDirectionType="0" DirectionType="Vertical" ctype="ListViewObjectData">
-                <Position X="0.0000" Y="0.0000" />
-                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <AnchorPoint />
                 <CColor A="255" R="255" G="255" B="255" />
-                <Size X="200.0000" Y="610.0000" />
-                <PrePosition X="0.0000" Y="0.0000" />
-                <PreSize X="0.2083" Y="0.9531" />
-                <SingleColor A="255" R="255" G="255" B="255" />
-                <FirstColor A="255" R="255" G="255" B="255" />
-                <EndColor A="255" R="255" G="255" B="255" />
-                <ColorVector ScaleY="1.0000" />
+                <Size X="40.0000" Y="20.0000" />
+                <PrePosition X="0.0052" Y="0.9922" />
+                <PreSize X="0.0417" Y="0.0313" />
+                <TextColor A="255" R="65" G="65" B="70" />
+                <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+                <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+                <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
               </NodeObjectData>
             </Children>
             <SingleColor A="255" R="255" G="255" B="255" />

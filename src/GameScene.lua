@@ -24,7 +24,6 @@ function GameScene.initScene(layerI)
     if 0 == layerI then
         for i = 0, 4, 1 do
             local buttonname = "Button_"..i
-            cclog(buttonname)
             
             GameScene.arrButton[i] = layerScene:getChildByName(buttonname);
             GameScene.arrButton[i]:addTouchEventListener(GameScene["buttonClick"..i]);
@@ -32,7 +31,8 @@ function GameScene.initScene(layerI)
             cclog(GameScene.arrButton[i]:getName());
         end
     else
-        local returnLabel = layerScene:getChildByName("Panel_1"):getChildByName("Text_1");
+        local returnLabel = layerScene:getChildByName("Panel_1"):getChildByName("Button_1");
+        cclog(returnLabel:getName());
         returnLabel:addTouchEventListener(GameScene.buttonClick0)
     end
 end
@@ -53,7 +53,7 @@ function GameScene.commonClick(layerI)
             layerScene = GameScene.arrScene[layerI];
         end
 
-        GameScene.initScene(layerI);
+--        GameScene.initScene(layerI);
         cc.Director:getInstance():replaceScene(layerScene)
     elseif 1 == layerI then
         if nil == GameScene.arrScene[layerI] then
@@ -62,11 +62,12 @@ function GameScene.commonClick(layerI)
             layerScene:addChild(layer)
             GameScene.arrScene[layerI] = layerScene
             GameScene.arrLayer[layerI] = layer
+            
+            GameScene.initScene(layerI);
         else
             layerScene = GameScene.arrScene[layerI];
         end
         
-        GameScene.initScene(layerI);
         cc.Director:getInstance():replaceScene(layerScene)
     end
 end
