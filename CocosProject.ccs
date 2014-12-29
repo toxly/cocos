@@ -1,0 +1,11 @@
+<Solution>
+  <PropertyGroup Name="CocosProject" Version="2.0.6.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Project Name="MainScene.csd" />
+        <Project Name="Layer0.csd" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
