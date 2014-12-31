@@ -32,8 +32,8 @@ local function main()
     cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(960, 640, 1)
     
     --create scene 
-    local scene = require("GameScene")
-    local gameScene = scene.create()
+    local gs = require("GameScene")
+    local gameScene = gs.create()
     
     if cc.Director:getInstance():getRunningScene() then
         cc.Director:getInstance():replaceScene(gameScene)
@@ -43,8 +43,9 @@ local function main()
 
 end
 
-
-local status, msg = xpcall(main, __G__TRACKBACK__)
-if not status then
-    error(msg)
-end
+main()
+--
+--local status, msg = xpcall(main, __G__TRACKBACK__)
+--if not status then
+--    error(msg)
+--end

@@ -1,91 +1,103 @@
-local GameScene = class("GameScene",function()
-    return cc.Scene:create()
+local gs = {};
+gs.GameScene = nil;
+gs.GameScene = class("GameScene",function()
+  return cc.Scene:create()
 end)
 
-GameScene.arrButton = {}
-GameScene.arrLayer = {}
-GameScene.arrScene = {}
+gs.arrButton = {}
+gs.arrLayer = {}
 
-function GameScene.create()
-    local scene = GameScene.new()
-    local mainScene = cc.CSLoader:createNode("MainScene.csb");
-    scene:addChild(mainScene)
+function gs.create()
+  local scene = gs.GameScene.new()
+  local mainScene = cc.CSLoader:createNode("MainScene.csb");
+  scene:addChild(mainScene)
 
-    GameScene.arrScene[0] = scene;
-    GameScene.arrLayer[0] = mainScene;
-    
-    GameScene.initScene(0) 
-    
-    return scene
+  gs.arrLayer[0] = mainScene;
+
+  gs.initScene(0)
+
+  return scene
 end
 
-function GameScene.initScene(layerI) 
-    local layerScene = GameScene.arrLayer[layerI];
-    if 0 == layerI then
-        for i = 0, 4, 1 do
-            local buttonname = "Button_"..i
-            
-            GameScene.arrButton[i] = layerScene:getChildByName(buttonname);
-            GameScene.arrButton[i]:addTouchEventListener(GameScene["buttonClick"..i]);
+function gs.initScene(layerI)
+  local layerScene = gs.arrLayer[layerI];
+  if 0 == layerI then
+    for i = 0, 4, 1 do
+      local buttonname = "Button_"..i
 
-            cclog(GameScene.arrButton[i]:getName());
-        end
-    else
-        local returnLabel = layerScene:getChildByName("Panel_1"):getChildByName("Button_1");
-        cclog(returnLabel:getName());
-        returnLabel:addTouchEventListener(GameScene.buttonClick0)
+      gs.arrButton[i] = layerScene:getChildByName(buttonname);
+      gs.arrButton[i]:addTouchEventListener(gs["buttonClick"..i]);
+
+      cclog(gs.arrButton[i]:getName());
     end
+  elseif 1 == layerI then
+    local panelHead = layerScene:getChildByName("Panel_main"):getChildByName("Panel_head");
+    local returnLabel = panelHead:getChildByName("Button_return")
+    cclog(returnLabel:getName());
+    returnLabel:addTouchEventListener(gs.buttonClick0)
+
+    local buttonNew = panelHead:getChildByName("Button_new")
+    cclog(buttonNew:getName());
+    buttonNew:addTouchEventListener(gs.buttonClickNew)
+    
+    local touchOneListener = cc.EventListenerTouchOneByOne
+    touchOneListener:setEnabled(true);
+    
+  elseif 2 == layerI then
+    
+  end
 end
 
 
 
-function GameScene.commonClick(layerI)
-    cclog("Click button "..layerI);
-    local layerScene;
-    if 0 == layerI then
-        if nil == GameScene.arrScene[layerI] then
-            layerScene = GameScene.new()
-            local layer = cc.CSLoader:createNode("MainScene.csb");
-            layerScene:addChild(layer)
-            GameScene.arrScene[layerI] = layerScene
-            GameScene.arrLayer[layerI] = layer
-        else
-            layerScene = GameScene.arrScene[layerI];
-        end
+function gs.commonClick(layerI)
+  cclog("Click button "..layerI);
+  local layerScene;
+  if 0 == layerI then
+    layerScene = gs.GameScene.new()
+    local layer = cc.CSLoader:createNode("MainScene.csb");
+    layerScene:addChild(layer)
+    gs.arrLayer[layerI] = layer
 
---        GameScene.initScene(layerI);
-        cc.Director:getInstance():replaceScene(layerScene)
-    elseif 1 == layerI then
-        if nil == GameScene.arrScene[layerI] then
-            layerScene = GameScene.new()
-            local layer = cc.CSLoader:createNode("Layer0.csb");
-            layerScene:addChild(layer)
-            GameScene.arrScene[layerI] = layerScene
-            GameScene.arrLayer[layerI] = layer
-            
-            GameScene.initScene(layerI);
-        else
-            layerScene = GameScene.arrScene[layerI];
-        end
-        
-        cc.Director:getInstance():replaceScene(layerScene)
-    end
+    gs.initScene(layerI);
+    cc.Director:getInstance():replaceScene(layerScene)
+  elseif 1 == layerI then
+    layerScene = gs.GameScene.new()
+    local layer = cc.CSLoader:createNode("LayerList.csb");
+    layerScene:addChild(layer)
+    gs.arrLayer[layerI] = layer
+
+    gs.initScene(layerI);
+    cc.Director:getInstance():replaceScene(layerScene)
+  elseif 2 == layerI then
+    layerScene = gs.GameScene.new()
+    local layer = cc.CSLoader:createNode("LayerNew.csb");
+    layerScene:addChild(layer)
+    gs.arrLayer[layerI] = layer
+
+    gs.initScene(layerI);
+    cc.Director:getInstance():replaceScene(layerScene)
+  end
 end
 
-function GameScene.buttonClick0()
-    GameScene.commonClick(0);
-end
-function GameScene.buttonClick1()
-    GameScene.commonClick(1);
-end
-function GameScene.buttonClick2()
-    GameScene.commonClick(2);
-end
-function GameScene.buttonClick3()
-    GameScene.commonClick(3);
-end
-function GameScene.buttonClick4()
-    GameScene.commonClick(4);
+function gs.buttonClickNew()
+  gs.commonClick(2);
 end
 
-return GameScene
+function gs.buttonClick0()
+  gs.commonClick(0);
+end
+function gs.buttonClick1()
+  gs.commonClick(1);
+end
+function gs.buttonClick2()
+  gs.commonClick(2);
+end
+function gs.buttonClick3()
+  gs.commonClick(3);
+end
+function gs.buttonClick4()
+  gs.commonClick(4);
+end
+
+return gs

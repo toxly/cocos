@@ -4,7 +4,11 @@
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
         <Project Name="MainScene.csd" />
-        <Project Name="Layer0.csd" />
+        <Project Name="LayerList.csd" />
+        <Folder Name="Resource">
+          <Image Name="line.png" />
+        </Folder>
+        <Project Name="LayerNew.csd" />
       </RootFolder>
     </Group>
   </SolutionFolder>
