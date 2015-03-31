@@ -40,8 +40,8 @@ function gs.initScene(layerI)
     cclog(buttonNew:getName());
     buttonNew:addTouchEventListener(gs.buttonClickNew)
     
-    local touchOneListener = cc.EventListenerTouchOneByOne
-    touchOneListener:setEnabled(true);
+--    local touchOneListener = cc.EventListenerTouchOneByOne
+--    touchOneListener:setEnabled(true);
     
   elseif 2 == layerI then
     
